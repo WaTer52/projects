@@ -1,0 +1,195 @@
+@selectedBlue: #0086f6;
+@textColor: #333;
+@textBg: #F2F9FF;
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 12px;
+    font-family: tahoma, arial, "Hiragino Sans GB", '宋体', sans-serif;
+}
+
+body {
+    line-height: 1.5px;
+}
+
+// 最外面的
+.outter {
+    width: 1000px; //最外面的设置1000px
+    // height:1000px;
+    border: 1px solid black;
+}
+
+//出发地和目的地
+.depari {
+    padding-top: 20px;
+    width: 628px;
+
+    .tHead {
+        margin-bottom: 20px;
+        border-radius: 40px;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        line-height: 50px;
+        box-shadow: 0 10px 40px -5px rgba(150, 172, 177, 0.8);
+        color: #83818c;
+
+        div {
+            border-bottom-left-radius: inherit;
+            border-bottom-right-radius: inherit;
+            width: 50%;
+            height: 50px;
+            font-size: 16px;
+            color: @textColor;
+            letter-spacing: 5px;
+            border-bottom: 2px solid transparent;
+
+            &:hover {
+                box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+            }
+        }
+
+        .active {
+            color: @selectedBlue;
+            // border-bottom: 2px solid @selectedBlue;
+        }
+    }
+
+    .tBody {
+        padding-top: 20px;
+        background-color: #fff;
+
+        div {
+            width: 100%;
+        }
+
+        .tBodyHeads {
+            display: flex;
+            text-align: center;
+            line-height: 30px; //ABCD的行高
+
+            div {
+                border-bottom: 1px solid #e6e6e6;
+                border-radius: 1px;
+
+                &:hover {
+                    color: @selectedBlue;
+                    cursor: pointer;
+                }
+
+            }
+
+            .active {
+                color: @selectedBlue;
+                border-bottom: 2px solid @selectedBlue;
+            }
+
+        }
+
+        .tBodyInners {
+
+            div {
+                width: 100%;
+
+                .domestic-city-item {
+                    text-align: center;
+
+                    .city-character {
+                        //完成
+                        width: 50px;
+                        line-height: 32px;
+                        vertical-align: top;
+                        font-weight: 600;
+                        float: left;
+                        padding-right: 1px;
+                    }
+
+                    ul {
+                        li {
+                            word-wrap: break-word;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            border: none;
+                            padding: 0 2px 0 8px;
+                            width: 84px;
+                            height: 32px;
+                            line-height: 32px;
+                            font-size: 14px;
+                            color: #333;
+                            float: left;
+                            cursor: pointer;
+                            position: relative;
+
+                            &:hover {
+                                color: @selectedBlue;
+                                background-color: @textBg;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .tBodyInner0 {
+                display: none;
+            }
+
+            .tBodyInner1 {
+                display: none;
+            }
+
+            .active {
+                display: block;
+            }
+
+        }
+    }
+}
+
+// 出发日期
+.depDate {
+    input {
+        margin-top: 20px;
+        width: 312px;
+        border-radius: 40px;
+        height: 50px;
+        line-height: 50px;
+        box-shadow: 0 10px 40px -5px rgba(150, 172, 177, 0.8);
+        color: #83818c;
+    }
+
+}
+
+.outter {
+    .proxies {
+        float: left;
+        padding-left: 200px;
+        height: 50px
+    }
+}
+
+#proxies {
+    #proxies_label{
+        text-align: center;
+        padding-bottom: 0px;
+        label{
+            padding-top:1px !important;
+        }
+    }
+    .form-check {
+        .form-check-input {
+            width: 4em;
+            height: 2em;
+            margin-bottom:20px;
+        }
+        .form-check-label{
+            font-size:12px;
+            margin-top:6px;
+            margin-left: 6px;
+        }
+    }
+
+
+}

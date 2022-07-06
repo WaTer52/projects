@@ -1,0 +1,154 @@
+@media screen and (min-width: 750px) {
+    html {
+        font-size: 75px !important;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eef1f6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: .16rem;
+}
+
+.main {
+    background-color: rgb(248, 248, 248);
+    position: relative;
+    font-size: .16rem;
+    height: 4.9333rem;
+    width: 15.0933rem;
+    padding: .32rem;
+    margin-top: 1.3333rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .2rem;
+}
+
+.line {
+    width: 100%;
+    height: .8533rem;
+    margin-bottom: .2133rem;
+    position: absolute;
+}
+
+.flight, .departure_date {
+    width: 4.5333rem;
+    height: .8533rem;
+    float: left;
+    position: relative;
+    margin-right: .2rem;
+    background-color: rgb(248, 248, 248);
+    border-radius: .08rem;
+    border: .0133rem solid rgb(232, 232, 232);
+}
+
+.flight {
+    width: 9.68rem;
+}
+
+.flight:hover, .departure_date:hover {
+    box-shadow: 0 .0533rem .08rem 0 rgba(168, 168, 168, 0.612);
+}
+
+.number {
+    margin: .2rem;
+    border: .0133rem solid #ddd;
+    border-radius: .2667rem;
+    width: .4rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    font-size: .2133rem;
+    float: left;
+}
+
+.form {
+    width: 4.2267rem;
+    height: .8267rem;
+    line-height: .24rem;
+    float: left;
+    position: relative;
+    text-size-adjust: 100%;
+}
+
+.form::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 1px;
+    background: #fff;
+    border-top: .0267rem solid #0086f6;
+    display: none;
+}
+
+.form-label {
+    position: absolute;
+    top: .2533rem;
+    left: 16px;
+    color: #999;
+    font-size: 16px;
+    z-index: 1;
+}
+
+.form-input {
+    padding: .3867rem 0 .1867rem .2133rem;
+    border: none;
+    outline: none;
+    float: left;
+    position: absolute;
+    right: .2107rem;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 4.0267rem;
+    height: .84rem;
+    line-height: .2667rem;
+    font-size: .2133rem;
+    background-color: aqua;
+    text-overflow: ellipsis;
+}
+
+.switch-btn {
+    position: relative;
+    float: left;
+    vertical-align: middle;
+    margin-top: .2133rem;
+    color: #666;
+    text-align: center;
+    cursor: pointer;
+}
+
+.switch-btn:after {
+    content: "";
+    width: 1px;
+    height: 62px;
+    position: absolute;
+    left: 15px;
+    /*background: url(//pic.c-ctrip.com/fltcommon/index/ico/input-liner.png);*/
+    backdrop: "images/imput-liner.png/";
+    top: -15px;
+    z-index: 3;
+}
+
+.icon-wrap {
+    z-index: 4;
+    position: relative;
+    box-sizing: border-box;
+    width: .4rem;
+    height: .4rem;
+    background-color: #fff;
+    border: .0133rem solid #ddd;
+    border-radius: 50%;
+    animation: none;
+}
+
+#content {
+    display: inline-block;
+    width: 4.36rem;
+    height: .2667rem;
+    /*padding: .3867rem,.2133rem,.1867rem,0;*/
+    padding: .3867rem .2133rem .1867rem 0;
+}

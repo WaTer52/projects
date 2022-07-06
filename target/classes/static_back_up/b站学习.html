@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <link rel="stylesheet" href="css/theme.css" type="text/css">
+    <script src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+    <link rel="stylesheet" href="learn/learn.css" type="text/css">
+
+</head>
+
+<body>
+
+
+    <!-- sahnfmginnag asfaas
+     -->
+    <div class="outter row">
+        <!-- 下面处理单程还是联程 -->
+        <div class="oneOrMulti">
+            <div id="test">
+                <div class="tabs">
+                    <input type="radio" id="radio-1" name="tabs" checked />
+                    <label class="tab" for="radio-1">单程</label>
+                    <input type="radio" id="radio-2" name="tabs" />
+                    <label class="tab" for="radio-2">联程</label>
+                    <span class="glider"></span>
+                </div>
+            </div>
+            <!-- <label class="form-check-label" for="flexSwitchCheckChecked">单程</label>
+            <div class="form-check form-switch col-4">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+            </div>
+            <label class="form-check-label" for="flexSwitchCheckChecked">联程</label> -->
+        </div>
+        <!-- (最外层)存放出发地和目的地 -->
+        <div class="depari col-8">
+            <!-- 存放出发地和目的地两个框 -->
+            <div class="tHead" @click="pop_select">
+                <!-- 存放出发地框 -->
+                <div index-id=0 class="tHead0 active">出发地</div>
+                <!-- 存放目的地框 -->
+                <div index-id=1 class="tHead1">目的地</div>
+            </div>
+            <!-- (最外层)存放城市列表 -->
+            <div class="tBody" v-show="isShowCity">
+                <!-- 里面的div装有不同的ABCD之类的索引 -->
+                <div class="tBodyHeads active">
+                    <div index-id=0 class="tBodyHead0 active">ABCDEF</div>
+                    <div index-id=1 class="tBodyHead1">GHIJ</div>
+                    <div index-id=2 class="tBodyHead2">KLMN</div>
+                    <div index-id=3 class="tBodyHead3">PQRSTUVW</div>
+                    <div index-id=4 class="tBodyHead4">XYZ</div>
+                </div>
+                <!-- 下面的五个div装有不同的城市 -->
+                <div class="tBodyInners">
+                    <!-- ABCDEF的城市 -->
+                    <div id="asd" class="tBodyInner0 active">
+                        <!-- A的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">A</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2" class="list-group-item">阿勒泰
+                                </li>
+                                <li class="list-group-item col-2">阿克苏</li>
+                                <li class="list-group-item col-2">鞍山</li>
+                                <li class="list-group-item col-2">安庆</li>
+                                <li class="list-group-item col-2">安顺</li>
+                                <li class="list-group-item col-2">阿拉善左</li>
+                                <li class="list-group-item col-2">中国澳门
+                                <li class="list-group-item col-2">阿里</li>
+                                <li class="list-group-item col-2">阿拉善右</li>
+                                <li class="list-group-item col-2">阿尔山
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- B的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">B</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">巴中</li>
+                                <li class="list-group-item col-2">百色</li>
+                                <li class="list-group-item col-2">包头</li>
+                                <li class="list-group-item col-2">毕节</li>
+                                <li class="list-group-item col-2">北海</li>
+                                <li class="list-group-item col-2">北京</li>
+                                <li class="list-group-item col-2">北京(大</li>
+                                <li class="list-group-item col-2">北京(首</li>
+                                <li class="list-group-item col-2">博乐</li>
+                                <li class="list-group-item col-2">保山</li>
+                                <li class="list-group-item col-2">白城</li>
+                                <li class="list-group-item col-2">布尔津</li>
+                                <li class="list-group-item col-2">白山</li>
+                                <li class="list-group-item col-2">巴彦淖尔
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- C的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">C</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">昌都</li>
+                                <li class="list-group-item col-2">承德</li>
+                                <li class="list-group-item col-2">常德</li>
+                                <li class="list-group-item col-2">长春</li>
+                                <li class="list-group-item col-2">朝阳</li>
+                                <li class="list-group-item col-2">赤峰</li>
+                                <li class="list-group-item col-2">长治</li>
+                                <li class="list-group-item col-2">重庆</li>
+                                <li class="list-group-item col-2">长沙</li>
+                                <li class="list-group-item col-2">成都</li>
+                                <li class="list-group-item col-2">沧源</li>
+                                <li class="list-group-item col-2">常州</li>
+                                <li class="list-group-item col-2">池州</li>
+                            </ul>
+                        </div>
+                        <!-- D的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">D</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">大同</li>
+                                <li class="list-group-item col-2">达州</li>
+                                <li class="list-group-item col-2">稻城</li>
+                                <li class="list-group-item col-2">丹东</li>
+                                <li class="list-group-item col-2">迪庆</li>
+                                <li class="list-group-item col-2">大连</li>
+                                <li class="list-group-item col-2">大理</li>
+                                <li class="list-group-item col-2">敦煌</li>
+                                <li class="list-group-item col-2">东营</li>
+                                <li class="list-group-item col-2">大庆</li>
+                                <li class="list-group-item col-2">德令哈</li>
+                            </ul>
+                        </div>
+                        <!-- E的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">E</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">鄂尔多斯</li>
+                                <li class="list-group-item col-2">额济纳旗
+                                </li>
+                                <li class="list-group-item col-2">恩施</li>
+                                <li class="list-group-item col-2">二连浩特
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- F的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">F</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">福州</li>
+                                <li class="list-group-item col-2">阜阳</li>
+                                <li class="list-group-item col-2">抚远</li>
+                                <li class="list-group-item col-2">富蕴</li>
+                                <li class="list-group-item col-2">佛山</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- GHIJ的城市 -->
+                    <div class="tBodyInner1">
+                        <!-- A的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">A</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2" class="list-group-item">阿勒泰
+                                </li>
+                                <li class="list-group-item col-2">啦啦啦</li>
+                                <li class="list-group-item col-2">鞍山</li>
+                                <li class="list-group-item col-2">安庆</li>
+                                <li class="list-group-item col-2">安顺</li>
+                                <li class="list-group-item col-2">阿拉善左</li>
+                                <li class="list-group-item col-2">中国澳门
+                                <li class="list-group-item col-2">阿里</li>
+                                <li class="list-group-item col-2">阿拉善右</li>
+                                <li class="list-group-item col-2">阿尔山
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- B的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">B</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">巴中</li>
+                                <li class="list-group-item col-2">百色</li>
+                                <li class="list-group-item col-2">包头</li>
+                                <li class="list-group-item col-2">毕节</li>
+                                <li class="list-group-item col-2">北海</li>
+                                <li class="list-group-item col-2">北京</li>
+                                <li class="list-group-item col-2">北京(大</li>
+                                <li class="list-group-item col-2">北京(首</li>
+                                <li class="list-group-item col-2">博乐</li>
+                                <li class="list-group-item col-2">保山</li>
+                                <li class="list-group-item col-2">白城</li>
+                                <li class="list-group-item col-2">布尔津</li>
+                                <li class="list-group-item col-2">白山</li>
+                                <li class="list-group-item col-2">巴彦淖尔
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- C的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">C</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">昌都</li>
+                                <li class="list-group-item col-2">承德</li>
+                                <li class="list-group-item col-2">常德</li>
+                                <li class="list-group-item col-2">长春</li>
+                                <li class="list-group-item col-2">朝阳</li>
+                                <li class="list-group-item col-2">赤峰</li>
+                                <li class="list-group-item col-2">长治</li>
+                                <li class="list-group-item col-2">重庆</li>
+                                <li class="list-group-item col-2">长沙</li>
+                                <li class="list-group-item col-2">成都</li>
+                                <li class="list-group-item col-2">沧源</li>
+                                <li class="list-group-item col-2">常州</li>
+                                <li class="list-group-item col-2">池州</li>
+                            </ul>
+                        </div>
+                        <!-- D的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">D</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">大同</li>
+                                <li class="list-group-item col-2">达州</li>
+                                <li class="list-group-item col-2">稻城</li>
+                                <li class="list-group-item col-2">丹东</li>
+                                <li class="list-group-item col-2">迪庆</li>
+                                <li class="list-group-item col-2">大连</li>
+                                <li class="list-group-item col-2">大理</li>
+                                <li class="list-group-item col-2">敦煌</li>
+                                <li class="list-group-item col-2">东营</li>
+                                <li class="list-group-item col-2">大庆</li>
+                                <li class="list-group-item col-2">德令哈</li>
+                            </ul>
+                        </div>
+                        <!-- E的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">E</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">鄂尔多斯</li>
+                                <li class="list-group-item col-2">额济纳旗
+                                </li>
+                                <li class="list-group-item col-2">恩施</li>
+                                <li class="list-group-item col-2">二连浩特
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- F的城市 -->
+                        <div class="domestic-city-item">
+                            <div class="city-character">F</div>
+                            <ul class="list-group list-group-horizontal row">
+                                <li class="list-group-item col-2">福州</li>
+                                <li class="list-group-item col-2">阜阳</li>
+                                <li class="list-group-item col-2">抚远</li>
+                                <li class="list-group-item col-2">富蕴</li>
+                                <li class="list-group-item col-2">佛山</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- <div class="tBodyInner2"></div>
+                <div class="tBodyInner3"></div>
+                <div class="tBodyInner4"></div> -->
+                </div>
+            </div>
+        </div>
+        <!-- 下面处理日期 -->
+        <div class="depDate col-4">
+            <input type="date" class="form-control" v-model="" placeholder="a">
+        </div>
+        <!-- 下面处理代理人 -->
+
+        <div id="proxies" class="col-12 row align-items-center justify-content-evently">
+            <div id="proxies_label" class="col-2">
+                <label>
+                    代理人:
+                </label>
+            </div>
+            <div class="form-check form-switch col-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Tom</label>
+            </div>
+            <div class="form-check form-switch col-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Tom</label>
+            </div>
+            <div class="form-check form-switch col-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Tom</label>
+            </div>
+            <div class="form-check form-switch col-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Tom</label>
+            </div>
+            <div class="form-check form-switch col-2">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Tom</label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <link href="bootstrap5.css" type="text/css" rel="stylesheet">
+    <script src="bootstrap5.js"></script>
+
+    <script>
+        new Vue({
+            el: '.depari',
+            data: {
+                isShowCity: false,
+
+            },
+            methods: {
+                pop_select: function () {
+                    this.isShowCity = !this.isShowCity
+                }
+            }
+        })
+    </script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
