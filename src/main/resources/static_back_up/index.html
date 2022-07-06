@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OverTheClouds</title>
+    <link rel="stylesheet" href="css/mycss.css">
+    <script src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/jquery.slim.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <!-- <ul class="nav">
+        <li>
+            <a href="#">ABCD</a>
+            <ul>
+                <li>北京</li>
+                <li>上海</li>
+                <li>重庆</li>
+                <li>广州</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">EFG</a>
+            <ul>
+                <li>海南</li>
+                <li>广州</li>
+                <li>广州</li>
+                <li>福建</li>
+            </ul>
+        </li>
+    </ul> -->
+    <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form method="post" action="" id="info" @submit.prevent="go">
+        <label>
+            出发地<input name="departure" type="text" placeholder="请输入出发地如:CTU" v-model="flightQueryInfo.departure">
+        </label>
+        <br>
+        <label>
+            目的地<input name="arrival" type="text" placeholder="请输入目的地如:BJS" v-model="flightQueryInfo.arrival">
+        </label>
+        <br>
+        <label>
+            日期<input name="departureDate" type="date" v-model="flightQueryInfo.departureDate">
+        </label>
+        <br>
+        <label v-show="isShow">
+            代理人(默认所有)
+            <input name="proxies" type="checkbox" value="Can001" v-model="flightQueryInfo.proxies">Can001
+            <input name="proxies" type="checkbox" value="Qan001" v-model="flightQueryInfo.proxies">Qan001
+            <input name="proxies" type="checkbox" value="Sha001" v-model="flightQueryInfo.proxies">Sha001
+            <input name="proxies" type="checkbox" value="Yac001" v-model="flightQueryInfo.proxies">Yac001
+            <input name="proxies" type="checkbox" value="Zha001" v-model="flightQueryInfo.proxies">Zha001
+        </label>
+        <br>
+        <label>
+            单程/连程
+            <input name="oneWayOrMultiWay" type="radio" value="oneWay" v-model="flightQueryInfo.oneWayOrMultiWay"
+                @click="oneWayChecked">oneWay
+            <input name="oneWayOrMultiWay" type="radio" value="multiWay" v-model="flightQueryInfo.oneWayOrMultiWay"
+                @click="multiChecked">multiWay
+        </label>
+        <br>
+        <label v-show="isShow">
+            乘客数量
+            <input type="number" v-model.number="flightQueryInfo.needs">
+        </label>
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        new Vue({
+            el: "#info",
+            data: {
+                flightQueryInfo: {
+                    departure: "",//出发地
+                    arrival: "",//目的地
+                    oneWayOrMultiWay: "oneWay",//单程还是联程
+                    // proxies:["Can001","Qan001","Sha001","Yac001","Zha001"] // 最终
+                    proxies: ["Can001"],//测试//代理人
+                    departureDate: "",//出发日期
+                    needs: 1,//乘客数
+                },
+                isShow: true
+            },
+            methods: {
+                //提交表单的方法
+                go: function () {
+                    console.log(JSON.stringify(this.flightQueryInfo));
+                    axios({
+                        method: "POST",
+                        url: "http://localhost/query",
+                        data: JSON.stringify(this.flightQueryInfo),
+                        headers: {
+                            'Content-Type': 'application/json;charset=UTF-8'
+                        }
+                    }).then((e) => {
+                        console.log(e)
+                    }).catch(() => {
+                        console.log("发送失败")
+                    })
+                },
+
+                //联程时隐藏乘客数量和代理人,并设置代理人数为1
+                multiChecked: function () {
+                    this.flightQueryInfo.proxies = ["Can001", "Qan001", "Sha001", "Yac001", "Zha001"];
+                    this.flightQueryInfo.needs = 1;
+                    this.isShow = false;
+                },
+                // 单程时显示乘客数量和代理人
+                oneWayChecked: function () {
+                    this.flightQueryInfo.proxies = ["Can001"];
+                    this.isShow = true;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
