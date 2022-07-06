@@ -7,11 +7,12 @@ new Vue({
         // ari0:"北京",
         select_dep: true,
         select_ari: false,
-        display_choice: [{
+        display_choice: [
+            {
             dep: '成都',
             ari: '北京'
         },
-            // {dep:'北京',ari:'海口'}
+            //{dep:'北京',ari:'海口'}
         ], //展示用户选择的数据
         tmp_dep: null, //联程时临时存放用户的选择
         tmp_ari: null, //联程时临时存放用户的选择
@@ -29,7 +30,7 @@ new Vue({
             carrier: 'CA',//承运人
             flightNo: '1521',//航班号
             cabin: 'Y',//舱位
-            arrivalTime: '33:33',
+            arrivalTime: '03:33',
             departureTime: '00:55',//
             amount: 5555,//票价
         }]
@@ -90,7 +91,7 @@ new Vue({
                     result[i].arrivalTime = a + ":" + b
                     let c = result[i].departureTime.substr(0, 2);
                     let d = result[i].departureTime.substr(2, 2);
-                    result[i].departureTime = c + d;
+                    result[i].departureTime = c +":"+ d;
 
                 }
                 this.resultInfo = result;
@@ -109,8 +110,9 @@ new Vue({
         },
         // 点击城市的时候，存储该城市
         click_one(e) {
-            console.log(e.target.innerHTML);
+            
             var choice = e.target.innerHTML;
+            console.log(choice);
             if (this.select_dep) {
                 // 当选择了出发地时
                 this.display_choice[0].dep = choice;
@@ -129,8 +131,8 @@ new Vue({
         },
         // 联程时点击城市
         click_multi(e) {
-            console.log(e.target.innerHTML);
             var choice = e.target.innerHTML; //用户点击的城市
+            console.log(choice)
             if (this.select_dep) {
                 // 当选择了出发地时
                 this.tmp_dep = choice; //临时存放用户的选择

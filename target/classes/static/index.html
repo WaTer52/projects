@@ -39,16 +39,13 @@
         <div class="one adultNum_needs col-12" v-if="valueOneWay">
             <input class="form-control" placeholder="请输入乘客数:" type="number" v-show="valueOneWay"
                 v-model.number="flightQueryInfo.needs">
-            </input>
             <input class="form-control" placeholder="请输入请求结果数:" type="number"
-                v-model.number="flightQueryInfo.requestNum">
-            </input>
+                v-model.number="flightQueryInfo.requestNum">     
         </div>
         <!-- 联程时只输入请求结果数 -->
         <div class="multi adultNum_needs col-12" v-else="valueOneWay">
             <input class="form-control" placeholder="请输入请求结果数:" type="number"
                 v-model.number="flightQueryInfo.requestNum">
-            </input>
         </div>
         <!-- ################################################################################################### -->
         <!-- ###下面处理代理人 -->
@@ -131,7 +128,7 @@
                             <ul class="list-group list-group-horizontal row">
                                 <li class="list-group-item col-2" class="list-group-item">阿勒泰
                                 </li>
-                                <li class="list-group-item col-2"><button value="AKU" @>阿克苏</button></li>
+                                <li class="list-group-item col-2">阿克苏</li>
                                 <li class="list-group-item col-2">鞍山</li>
                                 <li class="list-group-item col-2">安庆</li>
                                 <li class="list-group-item col-2">安顺</li>
@@ -568,7 +565,7 @@
         <div class="depDate col-2" v-else="valueOneWay">
             <input type="date" class="form-control" v-model="flightQueryInfo.departureDate">
         </div>
-        <!-- ###减小联程 -->
+        <!-- ###减少联程 -->
         <div class="delete_add col-2" v-show="!valueOneWay">
             <button type="button" class="btn btn-primary" @click="del">减少</button>
         </div>
